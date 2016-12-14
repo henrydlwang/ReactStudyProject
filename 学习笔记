@@ -1,0 +1,32 @@
+一、JavaScript的一些知识
+   1、箭头函数：类似Lisp中的lambda，匿名函数，有如下特点：
+      1）没有关联this、arguments、super等变量，
+      2）箭头和函数体的左括号必须在一行
+   2、let关键字：在‘use strict’；模式下使用； 必须在块中使用，出了所在块，将变成undefined
+   3、const关键字：定义常量，如果常量是Object或数组，则限制了变量关联的对象或数组指针不变，但对象是可以设置属性的，数组也是可变的
+   4、定义严格模式，在脚本体或函数体第一行申明‘use strict’;及生效
+   5、bind: 用来指定function的this；返回一个新的function，该function中的this有bind的参数指定。同时还可以指定一个固定的参数。语法如下
+   fun.bind(thisObject[,args...])
+
+二、React知识
+  1、JSL，可以在JavaScript中支持xml语法。比如
+      var comp = <button onClick={this.handleClick}>Click me! Number of clicks: {this.state.count}</button>;
+
+      需要注意的是，如果return语句中需要返回多个DOM元素，比如上面的，需要加（）
+      return (<button onClick={this.handleClick}>Click me! Number of clicks: {this.state.count}</button>);
+  2、React组建有两个固定默认属性对象，通过this访问：props、state；其中props对象已定义的属性不建议修改，state属性对象可以保存组件生命周期中状态的变化。
+  3、Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements；
+     React elements are immutable.
+  4、component：1) it's a function,acception props; 2) using JSX,我们可以返回DOM结构，但只能有一个顶级tag，即不能是<span></span><span></span>,外面必须再加上一个父级别tag，比如<div><spand></span><span></span></div>
+     3)component 可以调用其他的component
+     4）component是独立的UI元素，可以接受外部的传参；可以复用
+     5）All React components must act like pure functions with respect to their props.
+     6）如果普通组件继承React.Component,会获取一些额外的属性，比如this.state,state is similar to props, but it is private and fully controlled by the component
+     7) 生命周期hook function： componentDidMount() 组件展现后回调方法；componentWillUnmount() 组件销毁前的回调方法
+     8）一个组件是否是stateful 还是stateless，外部无法知道，因为state属性是私有的，外部只能通过props给一个组件传递消息。React的消息流top-down的。
+  5、如果使用input需要使用props中的值做初始化，需要使用defaultValue={value}来设置input的初始值
+  6 components may accept arbitrary props, including primitive values, React elements, or functions.
+  7 react的构件名首字母必须大写。
+  Question:
+  1、在component中如何获取DOM元素中value值
+  2、component控制中DOM元素多少合适
